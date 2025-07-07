@@ -7,7 +7,6 @@ import { FaXTwitter } from "react-icons/fa6";
 const TOKEN_ADDRESS = "0xEf9fc2fa22F8c0EF8bcE8415fc7527448919b633";
 const DEX_URL = "https://app.uniswap.org/swap?outputCurrency=0xEf9fc2fa22F8c0EF8bcE8415fc7527448919b633&chain=base";
 
-
 const ABI = [
   "function balanceOf(address owner) view returns (uint256)",
   "function name() view returns (string)",
@@ -19,24 +18,6 @@ export default function App() {
   const [wallet, setWallet] = useState(null);
   const [balance, setBalance] = useState(null);
   const [symbol, setSymbol] = useState("...");
-  const [timeLeft, setTimeLeft] = useState(getCountdown());
-
-  function getCountdown() {
-    const launch = new Date("2025-07-07T00:00:00Z").getTime();
-    const now = new Date().getTime();
-    const diff = launch - now;
-    if (diff <= 0) return "Live!";
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-    return `${days}d ${hrs}h ${mins}m ${secs}s`;
-  }
-
-  useEffect(() => {
-    const timer = setInterval(() => setTimeLeft(getCountdown()), 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const connectWallet = async () => {
     if (!window.ethereum) return alert("Please install MetaMask.");
@@ -73,16 +54,16 @@ export default function App() {
       </div>
 
       <div style={styles.buttonRow}>
-        <button disabled style={{ ...styles.connectButton, ...styles.disabled }}>
-          Connect Wallet (Available July 16)
+        <button onClick={connectWallet} style={styles.connectButton}>
+          {wallet ? "Wallet Connected" : "Connect Wallet"}
         </button>
 
-        <button disabled style={{ ...styles.buyButton, ...styles.disabled }}>
-          Buy on Uniswap (Available July 16)
+        <button onClick={() => window.open(DEX_URL, "_blank")} style={styles.buyButton}>
+          Buy on Uniswap
         </button>
       </div>
 
-      {/*
+      {
       <div style={styles.chartWrapper}>
         <iframe
           src="https://www.geckoterminal.com/base/pools/0xYOURPOOLADDRESS"
@@ -92,7 +73,7 @@ export default function App() {
           title="BLOOT Chart"
         />
       </div>
-      */}
+      }
 
       {wallet && (
         <div style={styles.info}>
@@ -100,8 +81,6 @@ export default function App() {
           <p>Your {symbol} Balance: {balance}</p>
         </div>
       )}
-
-      <p style={styles.countdown}>Launch in: {timeLeft}</p>
 
       <section style={styles.section}>
         <h2 style={styles.sectionHeading}>Who is Baloo?</h2>
@@ -195,13 +174,6 @@ const styles = {
     fontFamily: "'Fredoka', sans-serif",
     whiteSpace: "nowrap",
   },
-  disabled: {
-    border: "2px solid #ff4d4f",
-    backgroundColor: "#f0f0f0",
-    color: "#888888",
-    cursor: "not-allowed",
-    opacity: 0.8,
-  },
   buttonRow: {
     display: "flex",
     flexDirection: "column",
@@ -220,11 +192,6 @@ const styles = {
     lineHeight: "1.6",
     fontFamily: "'Inter', sans-serif",
     marginTop: "12px",
-  },
-  countdown: {
-    fontSize: "18px",
-    marginTop: "20px",
-    fontWeight: "600",
   },
   section: {
     padding: "24px 16px",
