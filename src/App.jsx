@@ -5,7 +5,7 @@ import "./styles.css";
 import { FaXTwitter } from "react-icons/fa6";
 
 const TOKEN_ADDRESS = "0xEf9fc2fa22F8c0EF8bcE8415fc7527448919b633";
-const DEX_URL = "https://app.uniswap.org/swap?outputCurrency=0xEf9fc2fa22F8c0EF8bcE8415fc7527448919b633&chain=base";
+const DEX_URL = "https://app.uniswap.org/explore/pools/base/0x2E1AAf5824807d7F41e6D6bB64A7F83E2CCd8770";
 
 const ABI = [
   "function balanceOf(address owner) view returns (uint256)",
@@ -66,7 +66,7 @@ export default function App() {
       {
       <div style={styles.chartWrapper}>
         <iframe
-          src="https://www.geckoterminal.com/base/pools/0xYOURPOOLADDRESS"
+          src="https://app.uniswap.org/explore/pools/base/0x2E1AAf5824807d7F41e6D6bB64A7F83E2CCd8770"
           height="400"
           width="100%"
           style={{ border: "none", borderRadius: "12px", marginTop: "40px" }}
