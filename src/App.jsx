@@ -136,7 +136,7 @@ export default function App() {
 
       <footer style={styles.footer}>
         <p>Built with love for Baloo 🐾</p>
-        <a href="https://basescan.org/token/0xEf9fc2fa22F8c0EF8bcE8415fc7527448919b633" target="_blank" rel="noopener noreferrer">Etherscan</a>
+        <a href="https://basescan.org/token/0xEf9fc2fa22F8c0EF8bcE8415fc7527448919b633" target="_blank" rel="noopener noreferrer">BaseScan</a>
       </footer>
     </div>
   );
