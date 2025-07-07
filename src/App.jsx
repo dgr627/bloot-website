@@ -22,7 +22,7 @@ export default function App() {
   const [timeLeft, setTimeLeft] = useState(getCountdown());
 
   function getCountdown() {
-    const launch = new Date("2025-07-16T00:00:00Z").getTime();
+    const launch = new Date("2025-07-08T00:00:00Z").getTime();
     const now = new Date().getTime();
     const diff = launch - now;
     if (diff <= 0) return "Live!";
