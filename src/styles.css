@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  background-color: #d8ecf3; /* Labrador yellow */
+  color: #1e4b7e;             /* Blue font */
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Fredoka', sans-serif;
+}
